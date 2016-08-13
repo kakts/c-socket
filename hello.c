@@ -11,7 +11,7 @@ int main() {
   // 1: address family: AF_INET(IPv4)
   // 2: socket types: SOCK_STREAM(tcp)
   // 3: protocol
-  sock = socket(3000, 4000, 0);
+  sock = socket(AF_INET, SOCK_STREAM, 0);
   if (sock < 0) {
     perror("socket failed \n");
     printf("%d", errno);
