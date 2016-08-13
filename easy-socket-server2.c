@@ -12,6 +12,7 @@ int main() {
   unsigned int len;
   int sock;
   int count = 0;
+  char countStr[10];
   // create socket
   sock0 = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -25,13 +26,16 @@ int main() {
   listen(sock0, 5);
   printf("listen start");
   while (1) {
+    char str1[10] = "hello";
     count++;
+    // convert int to string
+    sprintf(countStr, "%d", count);
     printf("connection. %d", count);
     // accept client connection
     len = sizeof(client);
     sock = accept(sock0, (struct sockaddr *)&client, &len);
     // send 5 chars
-    write(sock, "Hello", 5);
+    write(sock, countStr, 5);
     // close tcp session
     close(sock);
   }
